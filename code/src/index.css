@@ -1,68 +1,95 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* Space theme - Deep blues and cosmic mauve */
+    --background: 220 40% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 35% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 40% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Deep space blue */
+    --primary: 220 70% 55%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Cosmic mauve */
+    --secondary: 280 50% 60%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 30% 20%;
+    --muted-foreground: 215 20% 70%;
+
+    /* Light mauve accent */
+    --accent: 270 60% 70%;
+    --accent-foreground: 220 40% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 30% 25%;
+    --input: 220 30% 20%;
+    --ring: 220 70% 55%;
+
+    --radius: 0.75rem;
+
+    /* Space gradients */
+    --gradient-space: linear-gradient(135deg, hsl(220 70% 55%), hsl(280 50% 60%));
+    --gradient-nebula: linear-gradient(180deg, hsl(220 40% 8%), hsl(280 40% 12%));
+    --gradient-card: linear-gradient(135deg, hsl(220 35% 12% / 0.8), hsl(280 35% 15% / 0.6));
+    
+    /* Glows and effects */
+    --glow-blue: 0 0 20px hsl(220 70% 55% / 0.5);
+    --glow-mauve: 0 0 20px hsl(280 50% 60% / 0.5);
+    --shadow-deep: 0 10px 40px -10px hsl(220 40% 5% / 0.8);
   }
-  a:hover {
-    color: #747bff;
+}
+
+@layer base {
+  * {
+    @apply border-border;
   }
-  button {
-    background-color: #f9f9f9;
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    background: linear-gradient(180deg, hsl(220 40% 8%), hsl(280 40% 12%));
+    min-height: 100vh;
+  }
+
+  /* Starfield background animation */
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s ease-in-out infinite;
   }
 }
