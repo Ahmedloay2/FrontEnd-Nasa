@@ -1,95 +1,76 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(180deg, #0f172a, #1e293b);
+  color: #e2e8f0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
-@layer base {
-  :root {
-    /* Space theme - Deep blues and cosmic mauve */
-    --background: 220 40% 8%;
-    --foreground: 210 40% 98%;
-
-    --card: 220 35% 12%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 220 40% 10%;
-    --popover-foreground: 210 40% 98%;
-
-    /* Deep space blue */
-    --primary: 220 70% 55%;
-    --primary-foreground: 210 40% 98%;
-
-    /* Cosmic mauve */
-    --secondary: 280 50% 60%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 220 30% 20%;
-    --muted-foreground: 215 20% 70%;
-
-    /* Light mauve accent */
-    --accent: 270 60% 70%;
-    --accent-foreground: 220 40% 10%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 220 30% 25%;
-    --input: 220 30% 20%;
-    --ring: 220 70% 55%;
-
-    --radius: 0.75rem;
-
-    /* Space gradients */
-    --gradient-space: linear-gradient(135deg, hsl(220 70% 55%), hsl(280 50% 60%));
-    --gradient-nebula: linear-gradient(180deg, hsl(220 40% 8%), hsl(280 40% 12%));
-    --gradient-card: linear-gradient(135deg, hsl(220 35% 12% / 0.8), hsl(280 35% 15% / 0.6));
-    
-    /* Glows and effects */
-    --glow-blue: 0 0 20px hsl(220 70% 55% / 0.5);
-    --glow-mauve: 0 0 20px hsl(280 50% 60% / 0.5);
-    --shadow-deep: 0 10px 40px -10px hsl(220 40% 5% / 0.8);
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@keyframes twinkle {
+  0%, 100% { 
+    opacity: 0.3; 
   }
+  50% { 
+    opacity: 1; 
+  }
+}
 
-  body {
-    @apply bg-background text-foreground overflow-x-hidden;
-    background: linear-gradient(180deg, hsl(220 40% 8%), hsl(280 40% 12%));
-    min-height: 100vh;
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
   }
+  50% {
+    opacity: 0.5;
+  }
+}
 
-  /* Starfield background animation */
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
-  }
+/* Utility classes */
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite;
+}
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-  }
+/* Base link styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-  .stars {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .md-hidden {
+    display: none !important;
   }
+}
 
-  .star {
-    position: absolute;
-    background: white;
-    border-radius: 50%;
-    animation: twinkle 3s ease-in-out infinite;
-  }
+/* Focus styles for accessibility */
+button:focus,
+a:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
 }

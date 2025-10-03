@@ -1,0 +1,85 @@
+/* Home.css */
+.home-container {
+  min-height: calc(100vh - 8rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.home-hero {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 4rem;
+}
+
+.home-title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.home-subtitle {
+  font-size: 1.5rem;
+  color: #d1d5db;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.home-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.home-welcome {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.home-welcome-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #3b82f6;
+}
+
+.home-welcome-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #d1d5db;
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    padding: 1rem;
+  }
+  
+  .home-title {
+    font-size: 2.5rem;
+  }
+  
+  .home-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .home-features {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .home-hero {
+    margin-bottom: 2rem;
+  }
+}

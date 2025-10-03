@@ -1,0 +1,87 @@
+/* NBLGame.css */
+.nbl-container {
+  min-height: calc(100vh - 8rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.nbl-content {
+  text-align: center;
+  max-width: 600px;
+}
+
+.nbl-icon {
+  font-size: 4rem;
+  color: #3b82f6;
+  margin-bottom: 2rem;
+}
+
+.nbl-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nbl-description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #d1d5db;
+  margin-bottom: 2rem;
+}
+
+.nbl-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.nbl-feature {
+  padding: 1rem;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.nbl-feature:hover {
+  background: rgba(59, 130, 246, 0.2);
+  transform: translateY(-2px);
+}
+
+.nbl-feature-icon {
+  font-size: 1.5rem;
+  color: #3b82f6;
+  margin-bottom: 0.5rem;
+}
+
+.nbl-feature-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.nbl-feature-description {
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+@media (max-width: 768px) {
+  .nbl-container {
+    padding: 1rem;
+  }
+  
+  .nbl-title {
+    font-size: 2rem;
+  }
+  
+  .nbl-icon {
+    font-size: 3rem;
+  }
+}

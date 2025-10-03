@@ -1,0 +1,131 @@
+/* NotFound.css */
+.notfound-container {
+  min-height: calc(100vh - 8rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.notfound-content {
+  text-align: center;
+  max-width: 600px;
+}
+
+.notfound-icon {
+  font-size: 4rem;
+  color: #ef4444;
+  margin-bottom: 2rem;
+  transform: rotate(45deg);
+  animation: float 3s ease-in-out infinite;
+}
+
+.notfound-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #e2e8f0;
+}
+
+.notfound-subtitle {
+  font-size: 1.5rem;
+  color: #94a3b8;
+  margin-bottom: 2rem;
+}
+
+.notfound-description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #d1d5db;
+  margin-bottom: 2rem;
+}
+
+.notfound-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.notfound-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.notfound-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+  text-decoration: none;
+  color: white;
+}
+
+.notfound-suggestions {
+  margin-top: 3rem;
+  text-align: left;
+}
+
+.notfound-suggestions-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #e2e8f0;
+}
+
+.notfound-suggestions-list {
+  list-style: none;
+  padding: 0;
+}
+
+.notfound-suggestions-item {
+  margin-bottom: 0.5rem;
+}
+
+.notfound-suggestions-link {
+  color: #3b82f6;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.notfound-suggestions-link:hover {
+  color: #8b5cf6;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: rotate(45deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(45deg) translateY(-10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .notfound-container {
+    padding: 1rem;
+  }
+  
+  .notfound-title {
+    font-size: 2rem;
+  }
+  
+  .notfound-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .notfound-icon {
+    font-size: 3rem;
+  }
+  
+  .notfound-actions {
+    flex-direction: column;
+  }
+}
