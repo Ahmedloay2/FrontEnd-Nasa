@@ -1,8 +1,7 @@
-// import FeatureCard from "../../components/ui/FeatureCard/FeatureCard";
+import FeatureCard from "../../components/ui/FeatureCard/FeatureCard";
 import "./Home.css";
 
 const Home = () => {
-  /*
   const features = [
     {
       title: "NBL Training",
@@ -29,7 +28,6 @@ const Home = () => {
       path: "/ebook",
     },
   ];
-  */
 
   return (
     <div className="home-container">
@@ -43,13 +41,13 @@ const Home = () => {
       </div>
 
       <div className="home-features">
-        {/* Feature cards temporarily disabled */}
-        <div className="home-welcome">
-          <h2 className="home-welcome-title">Features Coming Soon</h2>
-          <p className="home-welcome-text">
-            NBL Training, Cupola Earth, Astronaut Story, and E-Book experiences
-          </p>
-        </div>
+        {features.map((feature, index) => (
+          <FeatureCard
+            key={feature.path}
+            {...feature}
+            delay={index * 100}
+          />
+        ))}
       </div>
 
       <div className="home-welcome">
