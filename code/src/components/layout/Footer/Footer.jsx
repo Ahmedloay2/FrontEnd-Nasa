@@ -3,17 +3,17 @@ import './Footer.css';
 
 const SOCIAL_LINKS = [
   { 
-    href: "https://github.com", 
+    href: "https://github.com/Ahmedloay2/Passengers", 
     icon: "fab fa-github", 
     label: "GitHub"
   },
   { 
-    href: "https://twitter.com", 
+    href: "https://github.com/Ahmedloay2/Passengers", 
     icon: "fab fa-twitter", 
     label: "Twitter"
   },
   { 
-    href: "https://nasa.gov", 
+    href: "https://github.com/Ahmedloay2/Passengers", 
     icon: "fas fa-globe", 
     label: "NASA Official Website"
   }
