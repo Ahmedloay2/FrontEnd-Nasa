@@ -1,6 +1,13 @@
 # 🚀 AstroPass - NASA Space Apps Challenge 2025
+here's a link has the videos demonstrating our work(2 games videos + website video)
+https://drive.google.com/drive/folders/1GN_9H3Ic3mE7iAYCi32-H4RStInrzcsK
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+here's the link of our pdf
+https://drive.google.com/drive/folders/1-6KUtC3QeZu-zw7ghCa18hIB1q-LocK-
+
+
+
 [![React](https://img.shields.io/badge/React-18.3.1-61DAFB?logo=react)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-7.1.9-646CFF?logo=vite)](https://vitejs.dev/)
 [![NASA Space Apps](https://img.shields.io/badge/NASA-Space%20Apps%20Challenge-0B3D91)](https://www.spaceappschallenge.org/)
@@ -20,13 +27,10 @@ AstroPass is a cutting-edge web application that brings the wonders of space exp
 - [🚀 Quick Start](#-quick-start)
 - [📁 Project Structure](#-project-structure)
 - [🎮 Game Modules](#-game-modules)
-- [🔧 Development](#-development)
 - [🏗️ Deployment](#️-deployment)
 - [♿ Accessibility](#-accessibility)
 - [📱 Responsive Design](#-responsive-design)
-- [🤝 Contributing](#-contributing)
 - [👥 Team](#-team)
-- [📄 License](#-license)
 
 ---
 
@@ -402,16 +406,6 @@ AstroPass is built with accessibility as a priority:
 - **Flexible Grid** - CSS Grid and Flexbox layouts
 - **Touch Friendly** - Large interactive areas
 - **Performance** - Optimized for mobile networks
-
-### Development Process
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-### Code of Conduct
-Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
 
 ## 👥 Team
 

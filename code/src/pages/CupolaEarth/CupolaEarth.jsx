@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useCallback, memo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Header from './components/Header'
 import './CupolaEarth.css'
@@ -42,13 +43,12 @@ const LoadingSpinner = memo(() => (
 ))
 
 LoadingSpinner.displayName = 'LoadingSpinner'
-
-// Game Panel Component
 const GamePanel = memo(() => {
-  const handleLaunchGame = useCallback(() => {
-    window.open('/cupola-game', '_blank', 'noopener,noreferrer')
-  }, [])
+  const navigate = useNavigate();
 
+  const handleLaunchGame = useCallback(() => {
+    navigate('/cupola-game');
+  }, [navigate]);
   return (
     <div id="game-panel" role="tabpanel" aria-labelledby="game-tab">
       <div className='cupola-earth-content-header'>
