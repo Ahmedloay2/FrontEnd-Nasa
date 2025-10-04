@@ -8,6 +8,10 @@ const Game = () => {
     const audioContextRef = useRef(null);
     const keysRef = useRef({});
     
+    // Game constants
+    const MAX_WEIGHT_LIMIT = 15; // Maximum weight before becoming overweight
+    const OVERWEIGHT_TIMER_LIMIT = 180; // Frames (3 seconds at 60 FPS) before losing when overweight
+
     // Game state
     const [gameState, setGameState] = useState({
         player: {
@@ -19,7 +23,7 @@ const Game = () => {
             vy: 0,
             mass: 0,
             baseMass: 0,
-            speed: 1.0,
+            speed: 0.2,
             rotation: 0
         },
         objects: [],
@@ -40,7 +44,10 @@ const Game = () => {
         attempts: 3,
         wasOutsideZone: false,
         alarmCooldown: 0,
-        bubbleSoundTimer: 0
+        bubbleSoundTimer: 0,
+        overweightTimer: 0,
+        isOverweight: false,
+        lostDueToOverweight: false
     });
 
     const [showEndScreen, setShowEndScreen] = useState(false);
@@ -198,6 +205,25 @@ const Game = () => {
 
             oscillator.start(audioContextRef.current.currentTime);
             oscillator.stop(audioContextRef.current.currentTime + 0.1);
+        },
+
+        overweight: () => {
+            if (!soundEnabled || !audioContextRef.current) return;
+            const oscillator = audioContextRef.current.createOscillator();
+            const gainNode = audioContextRef.current.createGain();
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContextRef.current.destination);
+
+            oscillator.frequency.setValueAtTime(300, audioContextRef.current.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(80, audioContextRef.current.currentTime + 1.5);
+            oscillator.type = 'sawtooth';
+
+            gainNode.gain.setValueAtTime(0.4, audioContextRef.current.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContextRef.current.currentTime + 1.5);
+
+            oscillator.start(audioContextRef.current.currentTime);
+            oscillator.stop(audioContextRef.current.currentTime + 1.5);
         }
     }), [soundEnabled]);
 
@@ -249,7 +275,9 @@ const Game = () => {
         setGameState(prev => ({ ...prev, isGameOver: true }));
         setShowEndScreen(true);
 
-        if (gameState.attempts <= 0) {
+        if (gameState.lostDueToOverweight) {
+            sounds.overweight();
+        } else if (gameState.attempts <= 0) {
             sounds.fail();
         } else if (gameState.collected >= gameState.totalObjects) {
             sounds.perfect();
@@ -258,7 +286,7 @@ const Game = () => {
         } else {
             sounds.fail();
         }
-    }, [gameState.attempts, gameState.collected, gameState.totalObjects, gameState.hasWon, sounds]);
+    }, [gameState.attempts, gameState.collected, gameState.totalObjects, gameState.hasWon, gameState.lostDueToOverweight, sounds]);
 
     // Drawing functions
     const drawAstronaut = useCallback((ctx, x, y) => {
@@ -335,16 +363,23 @@ const Game = () => {
         // Mass indicator
         ctx.save();
         ctx.translate(0, 13);
-        if (gameState.player.mass > 5) {
-            ctx.fillStyle = '#ff0000';
+        if (gameState.player.mass >= MAX_WEIGHT_LIMIT) {
+            ctx.fillStyle = '#8B0000'; // Dark red for overweight
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = '#ff0000';
+        } else if (gameState.player.mass > MAX_WEIGHT_LIMIT - 3) {
+            ctx.fillStyle = '#ff4500'; // Orange for approaching limit
+        } else if (gameState.player.mass > 5) {
+            ctx.fillStyle = '#ff0000'; // Red for heavy
         } else if (gameState.player.mass < -3) {
-            ctx.fillStyle = '#ffff00';
+            ctx.fillStyle = '#ffff00'; // Yellow for light
         } else {
-            ctx.fillStyle = '#00ff00';
+            ctx.fillStyle = '#00ff00'; // Green for normal
         }
         ctx.beginPath();
         ctx.arc(0, 0, 4, 0, Math.PI * 2);
         ctx.fill();
+        ctx.shadowBlur = 0;
         ctx.restore();
 
         // EVA pack
@@ -516,6 +551,10 @@ const Game = () => {
             const newState = { ...prev };
             let isMoving = false;
 
+            // Check if player is overweight
+            const isCurrentlyOverweight = newState.player.mass >= MAX_WEIGHT_LIMIT;
+            newState.isOverweight = isCurrentlyOverweight;
+
             // Player movement (WASD only)
             if (keysRef.current['a']) {
                 newState.player.vx -= newState.player.speed;
@@ -526,7 +565,9 @@ const Game = () => {
                 isMoving = true;
             }
             if (keysRef.current['w']) {
-                newState.player.vy -= newState.player.speed;
+                // Severely limit or prevent upward movement when overweight
+                const upwardMultiplier = isCurrentlyOverweight ? 0.1 : 1;
+                newState.player.vy -= newState.player.speed * upwardMultiplier;
                 isMoving = true;
             }
             if (keysRef.current['s']) {
@@ -536,6 +577,21 @@ const Game = () => {
 
             if (isMoving) {
                 sounds.move();
+            }
+
+            // Overweight timer and loss condition
+            if (isCurrentlyOverweight) {
+                newState.overweightTimer++;
+                if (newState.overweightTimer === 1) {
+                    // Play overweight sound when first becoming overweight
+                    sounds.overweight();
+                }
+                if (newState.overweightTimer >= OVERWEIGHT_TIMER_LIMIT) {
+                    newState.lostDueToOverweight = true;
+                    setTimeout(() => endGame(), 300);
+                }
+            } else {
+                newState.overweightTimer = 0;
             }
 
             // Physics - reduced mass impact for better gameplay
@@ -845,7 +901,7 @@ const Game = () => {
                 vy: 0,
                 mass: 0,
                 baseMass: 0,
-                speed: 0.6,
+                speed: 0.22,
                 rotation: 0
             },
             objects: [],
@@ -866,7 +922,10 @@ const Game = () => {
             attempts: 3,
             wasOutsideZone: false,
             alarmCooldown: 0,
-            bubbleSoundTimer: 0
+            bubbleSoundTimer: 0,
+            overweightTimer: 0,
+            isOverweight: false,
+            lostDueToOverweight: false
         });
         setShowEndScreen(false);
         setShowWinNotification(false);
@@ -903,14 +962,19 @@ const Game = () => {
 
                 <div className="game-hud">
                     <div>⏱️ TIME: <span>{gameState.timeLeft}</span>s</div>
-                    <div>⚖️ MASS: <span>{gameState.player.mass.toFixed(1)}</span>kg</div>
+                    <div style={{
+                        color: gameState.player.mass >= MAX_WEIGHT_LIMIT ? '#8B0000' : 
+                               gameState.player.mass > MAX_WEIGHT_LIMIT - 3 ? '#ff4500' : 'white'
+                    }}>⚖️ MASS: <span>{gameState.player.mass.toFixed(1)}</span>kg (Max: {MAX_WEIGHT_LIMIT}kg)</div>
                     <div>📦 COLLECTED: <span>{gameState.collected}</span>/<span>{gameState.totalObjects}</span></div>
                     <div style={{color: '#00ff00', fontWeight: 'bold'}}>🎯 TARGET: <span>{gameState.targetCollections}</span></div>
                     <div className="attempts">❤️ ATTEMPTS: <span>{gameState.attempts}</span></div>
                     <div className="status">
-                        {isInSafeZone(gameState.player.x + gameState.player.width / 2, gameState.player.y + gameState.player.height / 2) 
-                            ? '✓ NEUTRAL' 
-                            : '⚠️ OUT OF ZONE!'
+                        {gameState.isOverweight ? 
+                            <span style={{color: '#8B0000', fontWeight: 'bold'}}>🔴 OVERWEIGHT! {Math.ceil((OVERWEIGHT_TIMER_LIMIT - gameState.overweightTimer) / 60)}s</span> :
+                            isInSafeZone(gameState.player.x + gameState.player.width / 2, gameState.player.y + gameState.player.height / 2) 
+                                ? '✓ NEUTRAL' 
+                                : '⚠️ OUT OF ZONE!'
                         }
                     </div>
                 </div>
@@ -924,22 +988,20 @@ const Game = () => {
                     ></div>
                 </div>
 
-                <div className="game-instructions">
-                    ⬆️⬇️⬅️➡️ SWIM | SPACE to COLLECT | Stay in GREEN CIRCLE
-                </div>
-
                 <div className={`end-screen ${showEndScreen ? 'show' : ''}`}>
                     <h1>
-                        {gameState.attempts <= 0 ? '💔 OUT OF ATTEMPTS' :
+                        {gameState.lostDueToOverweight ? '⚖️ EQUIPMENT OVERLOAD' :
+                         gameState.attempts <= 0 ? '💔 OUT OF ATTEMPTS' :
                          gameState.collected >= gameState.totalObjects ? '🌟 PERFECT SCORE!' :
                          gameState.hasWon ? '✅ TRAINING PASSED' :
                          '⚠️ TRAINING INCOMPLETE'}
                     </h1>
                     <div className="score">Score: <span>{gameState.score}</span></div>
                     <div className="fact">
-                        The NBL pool holds 6.2 million gallons of water and is 40 feet deep.
-                        Astronauts train here for 7 hours underwater to simulate every 1 hour of actual spacewalk.
-                        You just experienced what they practice hundreds of times before ever leaving Earth.
+                        {gameState.lostDueToOverweight ? 
+                            `You became too heavy (${gameState.player.mass.toFixed(1)}kg) and couldn't maintain buoyancy! In real EVA missions, astronauts must carefully manage their equipment weight to maintain neutral buoyancy. Exceeding weight limits makes it impossible to move efficiently and safely in the underwater training environment.` :
+                            'The NBL pool holds 6.2 million gallons of water and is 40 feet deep. Astronauts train here for 7 hours underwater to simulate every 1 hour of actual spacewalk. You just experienced what they practice hundreds of times before ever leaving Earth.'
+                        }
                     </div>
                     <button onClick={restartGame}>🔄 RETRY TRAINING</button>
                 </div>

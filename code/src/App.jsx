@@ -8,15 +8,16 @@ import Layout from "./components/layout/Layout";
 import "./App.css";
 
 // Lazy load components for better performance
-const Home = lazy(() => import("./pages/Home/Home"));
-const NBLGame = lazy(() => import("./pages/NBLGame/NBLGame"));
-const CupolaEarth = lazy(() => import("./pages/CupolaEarth/CupolaEarth"));
-const CupolaGame = lazy(() => import("./pages/CupolaEarth/Game/CupolaGame"));
-const Story = lazy(() => import("./pages/Story/Story"));
-const StoryForm = lazy(() => import("./pages/Story/components/StoryForm"));
-const StoryDisplay = lazy(() => import("./pages/Story/components/StoryDisplay"));
-const EBook = lazy(() => import("./pages/EBook/EBook"));
-const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
+const Home = lazy(() => import("./pages/Home/Home.jsx"));
+const CupolaEarth = lazy(() => import("./pages/CupolaEarth/CupolaEarth.jsx"));
+const CupolaGame = lazy(() => import("./pages/CupolaEarth/Game/CupolaGame.jsx"));
+const Story = lazy(() => import("./pages/Story/Story.jsx"));
+const StoryForm = lazy(() => import("./pages/Story/components/StoryForm.jsx"));
+const StoryDisplay = lazy(() => import("./pages/Story/components/StoryDisplay.jsx"));
+const EBook = lazy(() => import("./pages/EBook/EBook.jsx"));
+const NotFound = lazy(() => import("./pages/NotFound/NotFound.jsx"));
+const NBLGame = lazy(() => import("./pages/NBLGame/NBLGame.jsx"));
+
 
 // Loading wrapper component
 const SuspenseWrapper = ({ children }) => (
@@ -39,8 +40,9 @@ const SuspenseWrapper = ({ children }) => (
 );
 
 function App  (){
-  const routers = createBrowserRouter([
+
     // Full-screen game route (outside Layout)
+    const routers = createBrowserRouter([
     { 
       path: "/cupola-game", 
       element: (

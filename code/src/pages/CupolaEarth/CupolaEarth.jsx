@@ -133,9 +133,9 @@ const GamePanel = memo(() => {
 
 GamePanel.displayName = 'GamePanel'
 
-// About Panel Component
-const AboutPanel = memo(({ isLoading, aboutItems }) => (
-  <div id="about-panel" role="tabpanel" aria-labelledby="about-tab">
+// Discover Panel Component
+const DiscoverPanel = memo(({ isLoading, aboutItems }) => (
+  <div id="discover-panel" role="tabpanel" aria-labelledby="discover-tab">
     <div className='cupola-earth-content-header'>
       <h2>About Cupola Earth</h2>
       <p>Discover Earth from the unique vantage point of the International Space Station's Cupola module. Explore NASA's Earth observation missions and zoom into continents to see real-time data and stunning imagery captured by astronauts.</p>
@@ -149,8 +149,8 @@ const AboutPanel = memo(({ isLoading, aboutItems }) => (
   </div>
 ))
 
-AboutPanel.displayName = 'AboutPanel'
-AboutPanel.propTypes = {
+DiscoverPanel.displayName = 'DiscoverPanel'
+DiscoverPanel.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   aboutItems: PropTypes.arrayOf(PropTypes.shape({
     image: PropTypes.string.isRequired,
@@ -234,8 +234,8 @@ const CupolaEarth = memo(() => {
 
         <div className='cupola-earth-content'>
           {activeTab === 'Game' && <GamePanel />}
-          {activeTab === 'About' && (
-            <AboutPanel isLoading={isLoading} aboutItems={aboutItems} />
+          {activeTab === 'Discover' && (
+            <DiscoverPanel isLoading={isLoading} aboutItems={aboutItems} />
           )}
         </div>
       </div>

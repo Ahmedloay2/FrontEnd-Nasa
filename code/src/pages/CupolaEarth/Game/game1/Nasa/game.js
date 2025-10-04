@@ -109,7 +109,7 @@ const iconData = [
 ];
 
 // Elements
-const earthVideo = document.getElementById('earthVideo');
+// const earthVideo = document.getElementById('earthVideo'); // Unused variable
 const collectedCountDisplay = document.getElementById('collectedCount');
 const missedCountDisplay = document.getElementById('missedCount');
 const remainingCountDisplay = document.getElementById('remainingCount');
@@ -486,9 +486,11 @@ function showVictory() {
     
     // Calculate approximate stats (this is simplified)
     totalCollected = collectedIcons; // This would need to track across levels
+    totalMissed = totalPossible - totalCollected; // Calculate missed icons
     
     finalStats.innerHTML = `
-        Total Disasters Observed: ${discoveredLocations.size * 8}+<br>
+        Total Disasters Observed: ${totalCollected}<br>
+        Total Missed: ${totalMissed}<br>
         All 7 Natural Disasters Tracked! ✅<br>
         Missions Completed: 3/3<br><br>
         You've proven yourself as a master Earth observer!

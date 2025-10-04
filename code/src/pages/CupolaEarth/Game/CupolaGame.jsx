@@ -285,21 +285,11 @@ const CupolaGame = () => {
     const gameContainerRef = useRef(null);
     const iconIdCounterRef = useRef(0);
 
-    // Helper function to generate positions within circular cupola window
-    const generateCircularPosition = useCallback(() => {
-        // Cupola window is centered at 50%, 50% with radius constraints
-        // We want icons to appear within the circular window
-        const centerX = 50; // 50% of viewport
-        const centerY = 50; // 50% of viewport
-        const maxRadius = 25; // Maximum radius as percentage of viewport
-        
-        // Generate random angle and radius
-        const angle = Math.random() * 2 * Math.PI;
-        const radius = Math.random() * maxRadius * 0.8; // Use 80% of max radius to keep icons well inside
-        
-        // Convert polar to cartesian coordinates
-        const x = centerX + radius * Math.cos(angle);
-        const y = centerY + radius * Math.sin(angle);
+    // Helper function to generate positions like vanilla JS version
+    const generatePosition = useCallback(() => {
+        // Random position (within viewport but avoiding edges) - same as vanilla JS
+        const x = 15 + Math.random() * 70; // 15% to 85%
+        const y = 25 + Math.random() * 50; // 25% to 75%
         
         return { x, y };
     }, []);
@@ -397,8 +387,63 @@ const CupolaGame = () => {
         // Could add error state here if needed
     }, []);
 
-    // Game logic functions - Must be defined before event handlers that use them
+    // Spawn icon function - simplified approach
+    const spawnIcon = useCallback(() => {
+        console.log('🎯 spawnIcon called');
+        
+        const config = levelConfig[currentLevel];
+        if (!config) {
+            console.log('❌ No config found for level:', currentLevel);
+            return;
+        }
+
+        // Random icon
+        const iconInfo = iconData[Math.floor(Math.random() * iconData.length)];
+        
+        // Generate position like vanilla JS
+        const position = generatePosition();
+
+        // Create icon object
+        const newIcon = {
+            id: generateIconId(),
+            emoji: iconInfo.emoji,
+            iconData: iconInfo,
+            x: position.x,
+            y: position.y,
+            collected: false
+        };
+
+        console.log('✨ Creating new icon at position:', position, 'emoji:', iconInfo.emoji);
+
+        // Add to active icons and increment spawned count
+        setActiveIcons(prev => {
+            const newIcons = [...prev, newIcon];
+            console.log('📊 Active icons count will be:', newIcons.length);
+            return newIcons;
+        });
+        setIconsSpawned(prev => {
+            const newCount = prev + 1;
+            console.log('📈 Icons spawned count will be:', newCount);
+            return newCount;
+        });
+
+        // Auto-disappear after time
+        setTimeout(() => {
+            setActiveIcons(currentIcons => {
+                const iconStillExists = currentIcons.find(icon => icon.id === newIcon.id);
+                if (iconStillExists && !iconStillExists.collected) {
+                    // Icon was missed
+                    setMissedIcons(prev => prev + 1);
+                    return currentIcons.filter(icon => icon.id !== newIcon.id);
+                }
+                return currentIcons;
+            });
+        }, config.disappearTime);
+    }, [currentLevel, generatePosition, generateIconId]);
+
+    // Game logic functions - simplified version
     const startLevel = useCallback((level) => {
+        console.log('🚀 Starting level:', level);
         const config = levelConfig[level];
         
         // Reset level stats
@@ -414,74 +459,24 @@ const CupolaGame = () => {
             spawnIntervalRef.current = null;
         }
         
-        // Start spawning icons after a brief delay to ensure state is set
+        console.log('📋 Level config:', config);
+        
+        // Start spawning icons immediately - simplified approach
+        console.log('⏰ Starting to spawn icons immediately');
+        
+        // Spawn first icon immediately 
         setTimeout(() => {
-            // Create a function that spawns icons for the current level
-            const spawnIconForLevel = () => {
-                setActiveIcons(prevActiveIcons => {
-                    // Get current game state
-                    setIconsSpawned(currentSpawned => {
-                        // Check if we've spawned all icons
-                        if (currentSpawned >= config.totalIcons) {
-                            return currentSpawned;
-                        }
-                        
-                        if (prevActiveIcons.length >= config.maxSimultaneous) {
-                            return currentSpawned;
-                        }
-
-                        // Random icon
-                        const iconInfo = iconData[Math.floor(Math.random() * iconData.length)];
-                        
-                        // Generate position within circular cupola window
-                        const position = generateCircularPosition();
-
-                        // Create icon object
-                        const newIcon = {
-                            id: generateIconId(),
-                            emoji: iconInfo.emoji,
-                            iconData: iconInfo,
-                            x: position.x,
-                            y: position.y,
-                            collected: false
-                        };
-
-                        // Auto-disappear after time
-                        setTimeout(() => {
-                            setActiveIcons(currentIcons => {
-                                const iconStillExists = currentIcons.find(icon => icon.id === newIcon.id);
-                                if (iconStillExists && !iconStillExists.collected) {
-                                    // Icon was missed
-                                    setMissedIcons(prev => prev + 1);
-                                    return currentIcons.filter(icon => icon.id !== newIcon.id);
-                                }
-                                return currentIcons;
-                            });
-                        }, config.disappearTime);
-
-                        // Update spawned count
-                        const newSpawnedCount = currentSpawned + 1;
-                        
-                        // Add icon to active icons
-                        setActiveIcons(prevIcons => [...prevIcons, newIcon]);
-                        
-                        return newSpawnedCount;
-                    });
-                    
-                    return prevActiveIcons;
-                });
-            };
-            
-            // Spawn first icon immediately
-            spawnIconForLevel();
-            
-            // Set up interval for subsequent icons
-            spawnIntervalRef.current = setInterval(() => {
-                spawnIconForLevel();
-            }, config.spawnInterval);
-            
-        }, 1000); // 1 second delay to let everything initialize
-    }, [generateIconId, generateCircularPosition]);
+            console.log('🎯 Spawning first icon');
+            spawnIcon();
+        }, 500);
+        
+        // Set up interval for subsequent icons
+        spawnIntervalRef.current = setInterval(() => {
+            console.log('🎯 Interval attempting to spawn icon');
+            spawnIcon();
+        }, config.spawnInterval);
+        
+    }, [spawnIcon]);
 
     // Event handlers
     const handleStartGame = useCallback(() => {
@@ -490,6 +485,7 @@ const CupolaGame = () => {
     }, []);
 
     const handleStartLevel = useCallback(() => {
+        console.log('🎮 handleStartLevel called');
         setShowMissionBriefing(false);
         setGameActive(true);
         startLevel(currentLevel);
@@ -505,8 +501,6 @@ const CupolaGame = () => {
         setCurrentLevel(prev => prev + 1);
         setShowMissionBriefing(true);
     }, []);
-
-    // Core game functions - Must be defined before event handlers
     const resetGame = useCallback(() => {
         // Reset all game state
         setCurrentLevel(1);
@@ -521,17 +515,15 @@ const CupolaGame = () => {
         // Clear intervals
         if (spawnIntervalRef.current) {
             clearInterval(spawnIntervalRef.current);
-            spawnIntervalRef.current = null;
         }
         
         // Reset screen states
-        setShowStartScreen(true);
+        setShowStartScreen(false);
         setShowMissionBriefing(false);
         setShowGameOverScreen(false);
         setShowLevelComplete(false);
         setShowVictoryMessage(false);
     }, []);
-
     const handleRestart = useCallback(() => {
         resetGame();
         setShowVictoryMessage(false);
@@ -569,6 +561,7 @@ const CupolaGame = () => {
             return updatedIcons;
         });
     }, []);
+    // Game logic functions
 
     return (
         <div className="cupola-game">

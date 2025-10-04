@@ -1,13 +1,14 @@
-// export default Home;
 import FeatureCard from "../../components/ui/FeatureCard/FeatureCard";
-import Devolopers from "../../components/Devolopers/Devolopers";
+import Developers from "../../components/Devolopers/Devolopers"; // fixed naming
 import "./Home.css";
 import nblImg from "../../assets/jsc2007e079840~medium.jpg";
 import cupolaImg from "../../assets/iss038e013587~medium.png";
 import astronautImg from "../../assets/83d3223aecd09fc9357c2560b8c1aa07.png";
-import eBookImg from "../../assets/9a474b5fd6e5f3ee1f56e103a2256ce1.png" 
+import eBookImg from "../../assets/9a474b5fd6e5f3ee1f56e103a2256ce1.png";
 
 const Home = () => {
+  const currentYear = new Date().getFullYear();
+
   const features = [
     {
       title: "NBL Training",
@@ -47,11 +48,10 @@ const Home = () => {
           Your gateway to astronaut training and Earth observation from the
           International Space Station
         </p>
-      </header>
+      </div> {/* ✅ fixed closing tag */}
 
       <div className="home-features">
         {features.map((feature, index) => {
-          // alternate directions: left → right → down → left ...
           const directions = ["left", "right", "down"];
           const direction = directions[index % directions.length];
 
@@ -70,20 +70,30 @@ const Home = () => {
         <div className="home-mva-block">
           <h3 className="home-mva-title">Our Mission</h3>
           <p className="home-mva-text">
-            To <span className="mva-keyword">inspire</span> and <span className="mva-keyword">educate</span> the next generation of <span className="mva-keyword">explorers</span> by
-            simulating astronaut training and sharing the wonders of <span className="mva-keyword">Earth</span> observation from space.
+            To <span className="mva-keyword">inspire</span> and{" "}
+            <span className="mva-keyword">educate</span> the next generation of{" "}
+            <span className="mva-keyword">explorers</span> by simulating
+            astronaut training and sharing the wonders of{" "}
+            <span className="mva-keyword">Earth</span> observation from space.
           </p>
         </div>
         <div className="home-mva-block">
           <h3 className="home-mva-title">Our Vision</h3>
           <p className="home-mva-text">
-            A world where everyone can experience the <span className="mva-keyword">excitement</span> of <span className="mva-keyword">space</span> exploration and appreciate the <span className="mva-keyword">beauty</span> and <span className="mva-keyword">fragility</span> of our planet.
+            A world where everyone can experience the{" "}
+            <span className="mva-keyword">excitement</span> of{" "}
+            <span className="mva-keyword">space</span> exploration and
+            appreciate the <span className="mva-keyword">beauty</span> and{" "}
+            <span className="mva-keyword">fragility</span> of our planet.
           </p>
         </div>
         <div className="home-mva-block">
           <h3 className="home-mva-title">Our Approach</h3>
           <p className="home-mva-text">
-            We combine <span className="mva-keyword">immersive technology</span>, real <span className="mva-keyword">NASA data</span>, and engaging <span className="mva-keyword">storytelling</span> to make astronaut experiences accessible to all.
+            We combine <span className="mva-keyword">immersive technology</span>
+            , real <span className="mva-keyword">NASA data</span>, and engaging{" "}
+            <span className="mva-keyword">storytelling</span> to make astronaut
+            experiences accessible to all.
           </p>
         </div>
       </div>
@@ -91,15 +101,16 @@ const Home = () => {
       <section className="home-welcome">
         <h2 className="home-welcome-title">Mission Ready</h2>
         <p className="home-welcome-text">
-          NASA Space Apps Challenge {currentYear} • Exploring Space Through Technology
+          NASA Space Apps Challenge {currentYear} • Exploring Space Through
+          Technology
         </p>
-      </div>
+      </section> {/* ✅ fixed closing tag */}
 
-      <Devolopers />
+      <Developers /> {/* ✅ fixed component name */}
     </div>
   );
-});
+};
 
-Home.displayName = 'Home';
+Home.displayName = "Home";
 
 export default Home;

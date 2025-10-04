@@ -1,5 +1,6 @@
 import "./EBook.css";
-
+import ebookAudio from "../../assets/audio/Astropass eBook.mp3"
+import ebookPdf from "../../assets/Astropass_eBook.pdf"
 const EBook = () => {
   return (
     <div className="ebook-page-container">
@@ -14,7 +15,7 @@ const EBook = () => {
           <div className="ebook-viewer-card">
             {/* Replace with your actual e-book viewer component or iframe */}
             <iframe
-              src="/ebook-viewer"
+              src={ebookPdf} type="application/pdf"
               title="Space Journey E-Book"
               className="ebook-viewer-iframe"
               frameBorder="0"
@@ -24,7 +25,7 @@ const EBook = () => {
               <span className="ebook-audio-label">Not a fan of reading? No worries! Tune into the podcast version of the e-book and enjoy it on the go.</span>
               <div className="ebook-audio-bar-wrap">
                 <audio controls className="ebook-audio-player">
-                  <source src="/audio/ebook-podcast.mp3" type="audio/mpeg" />
+                  <source src={ebookAudio} type="audio/mp3" />
                   Your browser does not support the audio element.
                 </audio>
               </div>
@@ -32,11 +33,11 @@ const EBook = () => {
           </div>
         </div>
       </div>
-      <div className="ebook-quiz-section">
+      {/* <div className="ebook-quiz-section">
             <h2 className="ebook-quiz-title">"Prove Your Planetary Expertise"</h2>
             <p className="ebook-quiz-desc">Challenge yourself and unlock new cosmic insights.</p>
             <button className="ebook-quiz-btn">Start Quiz</button>
-          </div>
+          </div> TIME OUT*/}
     </div>
   );
 };

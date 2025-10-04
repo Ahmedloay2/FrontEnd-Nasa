@@ -160,25 +160,18 @@ const NBLGame = memo(() => {
             <li>Watch your mass and depth on the HUD for best results.</li>
           </ul>
         </div>
+        <button 
+          className="nbl-start-game-btn"
+          onClick={handleStartGame}
+          type="button"
+        >
+          <i className="fas fa-play"></i>
+          Start NBL Training Simulation
+        </button>
       </div>
-      <div className="nbl-game-container">
-        <iframe
-          src="/Game/index.html"
-          title="NBL Training Game"
-          className="nbl-game-iframe"
-          sandbox="allow-scripts allow-same-origin allow-forms"
-        />
-      </div>
-      
     </div>
   );
-};
-    <WelcomeScreen 
-      features={features} 
-      onStartGame={handleStartGame}
-    />
-  )
-})
+});
 
 NBLGame.displayName = 'NBLGame'
 

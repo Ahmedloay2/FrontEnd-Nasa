@@ -1,6 +1,6 @@
-﻿// export default FeatureCard;
-import { useRef, useEffect, useState } from "react";
+﻿import { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types"; // ✅ Added import
 import "./FeatureCard.css";
 
 const FeatureCard = ({
@@ -13,7 +13,6 @@ const FeatureCard = ({
 }) => {
   const cardRef = useRef(null);
   const [visible, setVisible] = useState(false);
-
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -62,20 +61,20 @@ const FeatureCard = ({
             <i className="fas fa-arrow-right"></i>
           </div>
         </div>
-      </article>
+      </div>
     </Link>
   );
-});
+}; // ✅ added missing closing brace
 
-FeatureCard.displayName = 'FeatureCard';
+FeatureCard.displayName = "FeatureCard";
 
 FeatureCard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired, // ✅ fixed: was "icon"
   path: PropTypes.string.isRequired,
   delay: PropTypes.number,
-  ariaLabel: PropTypes.string
+  direction: PropTypes.string,
 };
 
 export default FeatureCard;
