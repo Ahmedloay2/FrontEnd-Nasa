@@ -9,7 +9,7 @@
 
 AstroPass is a cutting-edge web application that brings the wonders of space exploration to your fingertips. Experience life as an astronaut through interactive training simulations, educational content, and stunning visualizations of Earth from space.
 
-![AstroPass Homepage](./docs/images/homepage-hero.png)
+![AstroPass Homepage](./docs/images/home-hero.jpg)
 *The main homepage showcasing all available space experiences*
 
 ## 📖 Table of Contents
@@ -28,79 +28,159 @@ AstroPass is a cutting-edge web application that brings the wonders of space exp
 - [👥 Team](#-team)
 - [📄 License](#-license)
 
+---
+
 ## 🌟 Features
 
+<div align="center">
+
 ### 🌍 **Cupola Earth Observatory**
-Experience Earth observation from the International Space Station's Cupola module. Explore breathtaking views of our planet with:
+*Experience Earth observation from the International Space Station's Cupola module*
+
+![Cupola Earth View](./docs/images/cupola-earth-main.png)
+
+</div>
+
+**Explore breathtaking views of our planet with:**
 - Real-time Earth viewing simulation
 - Interactive zoom controls
 - NASA Earth observation data integration
 - Stunning photography from space
 
-![Cupola Earth View](./docs/images/cupola-earth-main.png)
-*Interactive Earth observation from the ISS Cupola window*
+---
+
+<div align="center">
 
 ### 🏊‍♂️ **NBL (Neutral Buoyancy Laboratory) Training**
-Train like a real astronaut in our weightlessness simulation:
+*Train like a real astronaut in our weightlessness simulation*
+
+![NBL Training Game](./docs/images/nbl-training.jpg)
+
+</div>
+**Training features:**
 - Realistic underwater training environment
 - Interactive controls and movement
 - Educational content about astronaut preparation
 - Immersive 3D-like experience
 
-![NBL Training Game](./docs/images/nbl-training.png)
-*Astronaut training simulation in the Neutral Buoyancy Laboratory*
+---
+
+<div align="center">
 
 ### 📚 **Interactive Astronaut Stories**
-Embark on a choose-your-own-adventure journey through space:
+*Embark on a choose-your-own-adventure journey through space*
+
+![Story Module](./docs/images/story-interface.png)
+
+</div>
+
+**Story features:**
 - 6-part interactive story modules
 - Role selection (Commander, Pilot, Mission Specialist)
 - Smart quizzes with educational content
 - Memory games and challenges
 - Real astronaut experiences and scenarios
 
-![Story Module](./docs/images/story-interface.png)
-*Interactive storytelling with multiple choice decisions*
+---
+
+<div align="center">
 
 ### 📖 **Digital Space E-Book**
-"Orbiting the Void: An Astronaut's Life" - A comprehensive digital experience:
+*"Orbiting the Void: An Astronaut's Life" - A comprehensive digital experience*
+
+![E-Book Reader](./docs/images/ebook.JPG)
+
+</div>
+**E-book features:**
 - Full PDF reader integration
 - Audio narration (podcast version)
 - Stunning space photography
 - Personal astronaut stories and insights
 
-![E-Book Reader](./docs/images/ebook-reader.png)
-*Digital e-book with audio narration capabilities*
+---
 
 ## 🖼️ Project Gallery
 
-### Homepage Overview
-![Homepage Features](./docs/images/homepage-features.png)
+<div align="center">
+
+### 🏠 **Homepage Experience**
+
+![Homepage Features](./docs/images/home-features.jpg)
 *Clean and intuitive feature cards showcasing all available experiences*
 
-### Story Adventure System
-![Story Selection](./docs/images/story-selection.png)
-*Role selection interface for the interactive story experience*
+![Homepage Missions](./docs/images/home-missions.jpg)
+*Mission selection and navigation interface*
 
-![Story Gameplay](./docs/images/story-gameplay.png)
-*In-story decision making with educational quizzes*
+---
 
-### Earth Observation Gallery
-![Earth Gallery 1](./docs/images/earth-gallery-aurora.png)
+### 📖 **Interactive Story System**
+
+![Story Hero](./docs/images/story-hero.jpg)
+*Story introduction and character setup*
+
+![Story Form](./docs/images/story-form.jpg)
+*Interactive story form and user input interface*
+
+![Story Questions](./docs/images/story-question.jpg)
+*Educational quiz system with multiple choice questions*
+
+---
+
+### 🌍 **Earth Observation Gallery**
+
+![Earth Gallery Aurora](./docs/images/earth-gallery-aurora.jpg)
 *Aurora Borealis viewed from the International Space Station*
 
-![Earth Gallery 2](./docs/images/earth-gallery-night.png)
+![Earth Gallery Night](./docs/images/earth-gallery-night.jpg)
 *Earth at night showing city lights and human activity*
 
-![Earth Gallery 3](./docs/images/earth-gallery-eclipse.png)
+![Earth Gallery Eclipse](./docs/images/earth-gallery-eclipse.jpg)
 *Solar eclipse shadow captured from space*
 
-### NBL Training Environment
-![NBL Game Interface](./docs/images/nbl-game-interface.png)
-*Training controls and underwater environment simulation*
+---
 
-### Developer Team
-![Development Team](./docs/images/team-developers.png)
+### 🏊‍♂️ **NBL Training Environment**
+
+![NBL Main Interface](./docs/images/NBL-main.JPG)
+*NBL training main interface and navigation*
+
+![NBL Game Interface](./docs/images/nbl-game.JPG)
+*Interactive underwater training simulation*
+
+![NBL Content](./docs/images/nbl-content.JPG)
+*Educational content and training information*
+
+---
+
+### 🛰️ **Cupola Earth Observatory**
+
+![Cupola Main](./docs/images/cupola-main.JPG)
+*Cupola Earth main interface with navigation tabs*
+
+![Cupola Game](./docs/images/cupola-game.JPG)
+*Interactive Earth observation game*
+
+![Cupola Discover](./docs/images/cupola-discover.JPG)
+*Educational content and Earth science information*
+
+![Cupola Item Detail](./docs/images/cupola-item.jpg)
+*Detailed view of Earth observation items*
+
+---
+
+### 📚 **E-Book Experience**
+
+![E-Book Interface](./docs/images/ebook.JPG)
+*Complete e-book reading experience with audio controls*
+
+---
+
+### 👥 **Development Team**
+
+![Development Team](./docs/images/team-members.JPG)
 *Meet the talented team behind AstroPass*
+
+</div>
 
 ## 🛠️ Tech Stack
 
@@ -139,10 +219,10 @@ Embark on a choose-your-own-adventure journey through space:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Ahmedloay2/FrontEnd-Nasa.git
+git clone https://github.com/Ahmedloay2/Passengers.git
 
 # Navigate to project directory
-cd FrontEnd-Nasa/code
+cd Passengers/code
 
 # Install dependencies
 npm install
@@ -323,10 +403,6 @@ AstroPass is built with accessibility as a priority:
 - **Touch Friendly** - Large interactive areas
 - **Performance** - Optimized for mobile networks
 
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
-
 ### Development Process
 1. Fork the repository
 2. Create a feature branch
@@ -341,7 +417,7 @@ Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
 
 **AstroPass Development Team**
 
-![Team Photo](./docs/images/team-group.png)
+![Team Photo](./docs/images/team-members.JPG)
 *The dedicated team behind AstroPass*
 
 ### Core Developers
@@ -352,24 +428,13 @@ Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
 
 *Special thanks to NASA for providing inspiration and educational content.*
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
 
 ## 🚀 Ready to Explore Space?
 
 Experience the wonders of space exploration with AstroPass. Whether you're training like an astronaut, observing Earth from the ISS, or diving into interactive space stories, AstroPass offers an unforgettable journey through the cosmos.
 
-**[🌟 Launch AstroPass](https://your-deployed-url.com)**
+**[🌟 Launch AstroPass](https://passengers-gilt.vercel.app/)**
 
 *Built with ❤️ for NASA Space Apps Challenge 2025*
 
 ---
-
-### Quick Links
-- [🐛 Report Bug](https://github.com/Ahmedloay2/FrontEnd-Nasa/issues)
-- [💡 Request Feature](https://github.com/Ahmedloay2/FrontEnd-Nasa/issues)
-- [📧 Contact Team](mailto:your-email@example.com)
-- [🌟 NASA Space Apps](https://www.spaceappschallenge.org/)
