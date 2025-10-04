@@ -1,42 +1,73 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, memo, useCallback } from "react";
 import "./Starfield.css";
 
-const Starfield = () => {
-  const canvasRef = useRef(null);
+const STAR_COUNT = 100;
+const MIN_ANIMATION_DURATION = 2;
+const MAX_ANIMATION_DURATION = 5;
+const MIN_SIZE = 1;
+const MAX_SIZE = 3;
 
-  useEffect(() => {
-    if (!canvasRef.current) return;
+const Starfield = memo(() => {
+  const containerRef = useRef(null);
 
-    const container = canvasRef.current;
-    const starCount = 100;
-
-    // Create stars
-    for (let i = 0; i < starCount; i++) {
-      const star = document.createElement("div");
-      star.className = "star";
-      const size = Math.random() * 3;
-      star.style.width = `${size}px`;
-      star.style.height = `${size}px`;
-      star.style.left = `${Math.random() * 100}%`;
-      star.style.top = `${Math.random() * 100}%`;
-      star.style.animationDelay = `${Math.random() * 3}s`;
-      star.style.animationDuration = `${2 + Math.random() * 3}s`;
-      star.style.position = 'absolute';
-      star.style.backgroundColor = 'white';
-      star.style.borderRadius = '50%';
-      star.style.animation = 'twinkle 3s ease-in-out infinite';
-      container.appendChild(star);
-    }
-
-    return () => {
-      container.innerHTML = "";
-    };
+  const createStar = useCallback(() => {
+    const star = document.createElement("div");
+    star.className = "star";
+    
+    const size = MIN_SIZE + Math.random() * (MAX_SIZE - MIN_SIZE);
+    const animationDelay = Math.random() * 3;
+    const animationDuration = MIN_ANIMATION_DURATION + Math.random() * (MAX_ANIMATION_DURATION - MIN_ANIMATION_DURATION);
+    
+    // Set styles efficiently using style object
+    Object.assign(star.style, {
+      width: `${size}px`,
+      height: `${size}px`,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      animationDelay: `${animationDelay}s`,
+      animationDuration: `${animationDuration}s`,
+      position: 'absolute',
+      backgroundColor: 'white',
+      borderRadius: '50%',
+      opacity: Math.random() * 0.8 + 0.2,
+      animation: 'twinkle 3s ease-in-out infinite'
+    });
+    
+    return star;
   }, []);
 
-  return <div 
-    ref={canvasRef} 
-    className="starfield-container"
-  />;
-};
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    // Create document fragment for better performance
+    const fragment = document.createDocumentFragment();
+    
+    // Create all stars at once
+    for (let i = 0; i < STAR_COUNT; i++) {
+      fragment.appendChild(createStar());
+    }
+    
+    container.appendChild(fragment);
+
+    // Cleanup function
+    return () => {
+      if (container) {
+        container.innerHTML = "";
+      }
+    };
+  }, [createStar]);
+
+  return (
+    <div 
+      ref={containerRef} 
+      className="starfield-container"
+      role="presentation"
+      aria-hidden="true"
+    />
+  );
+});
+
+Starfield.displayName = 'Starfield';
 
 export default Starfield;

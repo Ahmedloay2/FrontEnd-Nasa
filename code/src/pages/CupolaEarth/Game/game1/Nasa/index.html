@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cupola Explorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="gameContainer">
+        <!-- Video background -->
+        <video id="earthVideo" autoplay loop muted playsinline>
+            <source src="earth2.mp4" type="video/mp4">
+            <source src="earth2.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="overlay"></div>
+        <div class="stars"></div>
+
+        <!-- Cupola Window Frame -->
+        <div id="cupolaFrame"></div>
+        
+        <!-- Title -->
+        <div id="title">🛰️ Cupola Explorer 🌍</div>
+
+        <!-- Mission Stats -->
+        <div id="missionStats">
+            <div class="stat-row">
+                <h3>Collected:</h3>
+                <span class="stat-value" id="collectedCount">0</span>
+            </div>
+            <div class="stat-row">
+                <h3>Missed:</h3>
+                <span class="stat-value" id="missedCount">0</span>
+            </div>
+            <div class="stat-row">
+                <h3>Remaining:</h3>
+                <span class="stat-value" id="remainingCount">0</span>
+            </div>
+        </div>
+
+        <!-- Hotspots Container -->
+        <div id="hotspotsContainer"></div>
+
+        <!-- Sticker Collection Book - Vertical -->
+        <div id="stickerBook">
+            <div class="book-title">🎖️<br>Collection</div>
+            <div class="stickers-container">
+                <div class="sticker" data-index="0">🌳</div>
+                <div class="sticker" data-index="1">🌊</div>
+                <div class="sticker" data-index="2">🏔️</div>
+                <div class="sticker" data-index="3">🏜️</div>
+                <div class="sticker" data-index="4">🌪️</div>
+                <div class="sticker" data-index="5">🌋</div>
+            </div>
+        </div>
+
+        <!-- Mission Briefing Screen -->
+        <div id="missionBriefing">
+            <div class="mission-briefing-content">
+                <h1 id="briefingLevelTitle"></h1>
+                <h2 id="briefingLevelName"></h2>
+                <div class="mission-description" id="briefingDescription"></div>
+                <div class="mission-objectives">
+                    <h3>📋 Mission Objectives:</h3>
+                    <ul id="briefingObjectives"></ul>
+                </div>
+                <button id="startLevelButton">🚀 Start Mission</button>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="gameOverScreen">
+            <div class="game-over-content">
+                <h1>❌ Mission Failed</h1>
+                <div class="game-over-text" id="gameOverText"></div>
+                <button id="tryAgainButton">🔄 Try Again</button>
+            </div>
+        </div>
+
+        <!-- Victory Message -->
+        <div id="victoryMessage">
+            <div class="victory-content">
+                <h1>🎉 Mission Complete! 🎉</h1>
+                <div class="victory-text">
+                    <p>Outstanding work, astronaut!<br>You've successfully completed all three missions!<br><br>📊 Final Statistics:<br><span id="finalStats"></span></p>
+                </div>
+                <button id="restartButton">🔄 Play Again</button>
+            </div>
+        </div>
+
+        <!-- Level Complete Screen -->
+        <div id="levelCompleteScreen">
+            <div class="level-complete-content">
+                <h1>🎊 Level Complete! 🎊</h1>
+                <div class="level-stats" id="levelStats"></div>
+                <h2>📚 What You Discovered:</h2>
+                <div class="facts-container" id="factsContainer"></div>
+                <div class="button-container">
+                    <button id="nextLevelButton">Next Mission →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Screen -->
+        <div id="startScreen">
+            <h1>🛰️ Cupola Explorer 🌍</h1>
+            <p>
+                Welcome, Astronaut!<br><br>
+                Your mission: Collect Earth's wonders as they appear through the cupola window.<br>
+                Click fast before they disappear!<br><br>
+                🎯 Complete 3 levels of increasing difficulty<br>
+                ⚠️ Don't miss too many - or the mission fails!<br>
+                ⭐ Collect all 6 unique stickers to win
+            </p>
+            <button id="startButton">🚀 Begin Mission</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

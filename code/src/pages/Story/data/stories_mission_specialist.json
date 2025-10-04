@@ -1,0 +1,16 @@
+[
+  {
+    "id": "theme_overview",
+    "title": "The Overview Effect: A Cognitive Shift",
+    "read_content": "The Overview Effect is a profound reaction astronauts feel when seeing the reality of Earth in space. It's often described as a feeling of awe, a deep understanding of the interconnection of all life, and a renewed sense of responsibility for protecting our home. As astronaut Nicole Stott said, 'You're flooded with this awareness that we are all in this together on this one, beautiful, and fragile planet.'",
+    "watch_content_url": "https://www.youtube.com/embed/ZM_g_a8_i18",
+    "ai_intro_text": "Listen to the words of those who have seen our world from 250 miles above. Notice how their perspective on home, and humanity, was forever changed."
+  },
+  {
+    "id": "theme_teamwork",
+    "title": "Teamwork and Isolation",
+    "read_content": "Living on the ISS is the ultimate test of teamwork. In a confined environment, far from home, trust in your crewmates is not just important—it's critical for survival. Astronauts train for years to build this cohesion, learning to communicate clearly and support each other through complex tasks and personal challenges. It's a powerful lesson in human collaboration.",
+    "watch_content_url": "https://www.youtube.com/embed/S_p7LiyOUx0",
+    "ai_intro_text": "Space is a silent, vast place. For the crew, their greatest strength is each other. Observe how teamwork makes the impossible possible."
+  }
+]

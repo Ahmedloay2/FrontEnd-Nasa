@@ -3,22 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1a1a2e" />
+    
+    <!-- Primary Meta Tags -->
     <title>AstroPass - NASA Space Apps Challenge 2025</title>
+    <meta name="title" content="AstroPass - NASA Space Apps Challenge 2025" />
     <meta name="description" content="Experience astronaut training and Earth observation from the ISS. Interactive games, storytelling, and educational content for NASA Space Apps Challenge 2025." />
+    <meta name="keywords" content="NASA, Space Apps Challenge, astronaut training, ISS, Earth observation, NBL, Cupola, space education" />
     <meta name="author" content="AstroPass Team" />
-
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
     <meta property="og:title" content="AstroPass - NASA Space Apps Challenge 2025" />
     <meta property="og:description" content="Experience astronaut training and Earth observation from the ISS. Interactive games, storytelling, and educational content." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
+    <meta property="og:image" content="/placeholder.svg" />
+    <meta property="og:url" content="https://your-domain.com" />
+    <meta property="og:site_name" content="AstroPass" />
+    
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:title" content="AstroPass - NASA Space Apps Challenge 2025" />
+    <meta name="twitter:description" content="Experience astronaut training and Earth observation from the ISS." />
+    <meta name="twitter:image" content="/placeholder.svg" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.ico" />
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    
+    <!-- PWA Meta Tags -->
+    <meta name="application-name" content="AstroPass" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="AstroPass" />
   </head>
 
   <body>
-    <div id="root"></div>
+    <noscript>
+      <div style="text-align: center; padding: 2rem; background: #1a1a2e; color: white; font-family: Arial, sans-serif;">
+        <h1>🚀 AstroPass</h1>
+        <p>This application requires JavaScript to function properly.</p>
+        <p>Please enable JavaScript in your browser and reload the page.</p>
+      </div>
+    </noscript>
+    
+    <div id="root" role="application" aria-label="AstroPass NASA Space Experience"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -1,0 +1,33 @@
+{
+  "name": "nasa-story-service",
+  "version": "1.0.0",
+  "description": "Enhanced Story Generation Service for NASA Space Adventures",
+  "main": "StoryService.js",
+  "scripts": {
+    "start": "node StoryService.js",
+    "dev": "nodemon StoryService.js",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "nasa",
+    "stories",
+    "ai",
+    "education",
+    "space"
+  ],
+  "author": "NASA Story Team",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "openai": "^4.104.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}

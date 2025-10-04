@@ -11,6 +11,12 @@
   padding: 0;
 }
 
+/* Non-sticky navbar for game pages */
+.navbar.navbar-not-sticky {
+  position: relative;
+  z-index: 10;
+}
+
 .navbar-container {
   max-width: 1200px;
   margin: 0 auto;

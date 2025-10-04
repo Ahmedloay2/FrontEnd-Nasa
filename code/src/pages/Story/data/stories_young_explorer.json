@@ -1,0 +1,52 @@
+[
+  {
+    "id": "story1",
+    "title": "What Does Floating Feel Like?",
+    "text": "It’s like swimming in the air! Astronauts say you can do somersaults whenever you want, and you never have to worry about bumping your head on the ceiling, because you just gently bounce off.",
+    "audio_filename": "story1_floating.mp3",
+    "quiz": {
+      "question": "What is another name for the feeling of floating in space?",
+      "options": [
+        "Weightlessness",
+        "Heavy Gravity",
+        "Swimming"
+      ],
+      "correct_answer": "Weightlessness"
+    }
+  },
+  {
+    "id": "story2",
+    "title": "Our Home, The Big Blue Ball",
+    "text": "From the space station, Earth looks like a beautiful, giant blue marble with swirling white clouds. You can't see any countries or borders, just one amazing home that we all share.",
+    "audio_filename": "story2_earthview.mp3",
+    "quiz": {
+      "question": "What does the Earth look like from space?",
+      "options": [
+        "A giant, peaceful marble.",
+        "A map with lines on it.",
+        "A flat pizza."
+      ],
+      "correct_answer": "A giant, peaceful marble."
+    }
+  },
+  {
+    "id": "story3",
+    "title": "Eating in Orbit",
+    "text": "Can you imagine your food floating away? That's why space food is specially packaged! Astronauts eat things like tortillas instead of bread, because bread makes too many crumbs that could float into important equipment.",
+    "audio_filename": "story3_spacefood.mp3",
+    "quiz": {
+      "question": "Why do astronauts prefer tortillas to bread in space?",
+      "options": [
+        "They taste better in space.",
+        "Bread makes too many floating crumbs.",
+        "Tortillas are easier to pack."
+      ],
+      "correct_answer": "Bread makes too many floating crumbs."
+    }
+  }
+]
+
+
+
+
+
