@@ -47,7 +47,7 @@ const Home = () => {
           Your gateway to astronaut training and Earth observation from the
           International Space Station
         </p>
-      </div>
+      </header>
 
       <div className="home-features">
         {features.map((feature, index) => {
@@ -88,16 +88,18 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="home-welcome">
+      <section className="home-welcome">
         <h2 className="home-welcome-title">Mission Ready</h2>
         <p className="home-welcome-text">
-          NASA Space Apps Challenge 2025 • Exploring Space Through Technology
+          NASA Space Apps Challenge {currentYear} • Exploring Space Through Technology
         </p>
       </div>
 
       <Devolopers />
     </div>
   );
-};
+});
+
+Home.displayName = 'Home';
 
 export default Home;

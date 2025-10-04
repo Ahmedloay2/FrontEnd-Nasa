@@ -41,4 +41,4 @@ const EBook = () => {
   );
 };
 
-export default EBook;
+export default EBook

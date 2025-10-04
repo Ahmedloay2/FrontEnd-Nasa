@@ -1,14 +1,20 @@
-import React from 'react'
-import Navbar from './Navbar/Navbar'
-import { Outlet } from 'react-router-dom'
-import Footer from './Footer/Footer'
+import React, { memo } from 'react';
+import { Outlet } from 'react-router-dom';
+import Navbar from './Navbar/Navbar';
+import Footer from './Footer/Footer';
 
-export default function Layout() {
+const Layout = memo(() => {
   return (
     <>
       <Navbar />
-      <Outlet />
+      <main role="main" className="main-content">
+        <Outlet />
+      </main>
       <Footer />
     </>
-  )
-}
+  );
+});
+
+Layout.displayName = 'Layout';
+
+export default Layout;

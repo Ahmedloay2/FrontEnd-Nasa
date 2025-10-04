@@ -62,9 +62,20 @@ const FeatureCard = ({
             <i className="fas fa-arrow-right"></i>
           </div>
         </div>
-      </div>
+      </article>
     </Link>
   );
+});
+
+FeatureCard.displayName = 'FeatureCard';
+
+FeatureCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
+  delay: PropTypes.number,
+  ariaLabel: PropTypes.string
 };
 
 export default FeatureCard;

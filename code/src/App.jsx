@@ -1,36 +1,140 @@
 ﻿import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import {createBrowserRouter, RouterProvider } from "react-router-dom";
-import Navbar from "./components/layout/Navbar/Navbar";
-import Footer from "./components/layout/Footer/Footer";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import LoadingSpinner from "./components/ui/LoadingSpinner/LoadingSpinner";
 import Starfield from "./components/ui/Starfield/Starfield";
-import Home from "./pages/Home/Home";
-import NBLGame from "./pages/NBLGame/NBLGame";
-import CupolaEarth from "./pages/CupolaEarth/CupolaEarth";
-import Story from "./pages/Story/Story";
-import EBook from "./pages/EBook/EBook";
-import NotFound from "./pages/NotFound/NotFound";
-import "./App.css";
 import Layout from "./components/layout/Layout";
+import "./App.css";
 
-const queryClient = new QueryClient();
+// Lazy load components for better performance
+const Home = lazy(() => import("./pages/Home/Home"));
+const NBLGame = lazy(() => import("./pages/NBLGame/NBLGame"));
+const CupolaEarth = lazy(() => import("./pages/CupolaEarth/CupolaEarth"));
+const CupolaGame = lazy(() => import("./pages/CupolaEarth/Game/CupolaGame"));
+const Story = lazy(() => import("./pages/Story/Story"));
+const StoryForm = lazy(() => import("./pages/Story/components/StoryForm"));
+const StoryDisplay = lazy(() => import("./pages/Story/components/StoryDisplay"));
+const EBook = lazy(() => import("./pages/EBook/EBook"));
+const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
+
+// Loading wrapper component
+const SuspenseWrapper = ({ children }) => (
+  <Suspense fallback={
+    <div style={{ 
+      minHeight: '60vh', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center' 
+    }}>
+      <LoadingSpinner 
+        message="Loading NASA experience..." 
+        size="large" 
+        theme="space" 
+      />
+    </div>
+  }>
+    {children}
+  </Suspense>
+);
 
 function App  (){
   const routers = createBrowserRouter([
-    { path: "/", element: <Layout />, children:[
-        { index: true, element: <Home /> },
-        { path: "/nbl-game", element: <NBLGame /> },
-        { path: "/cupola-earth", element: <CupolaEarth /> },
-        { path: "/story", element: <Story /> },
-        { path: "/ebook", element: <EBook /> },
-        { path: "*", element: <NotFound /> }
+    // Full-screen game route (outside Layout)
+    { 
+      path: "/cupola-game", 
+      element: (
+        <SuspenseWrapper>
+          <CupolaGame />
+        </SuspenseWrapper>
+      )
+    },
+    { 
+      path: "/", 
+      element: <Layout />, 
+      children: [
+        { 
+          index: true, 
+          element: (
+            <SuspenseWrapper>
+              <Home />
+            </SuspenseWrapper>
+          )
+        },
+        { 
+          path: "/nbl-game", 
+          element: (
+            <SuspenseWrapper>
+              <NBLGame />
+            </SuspenseWrapper>
+          )
+        },
+        { 
+          path: "/cupola-earth", 
+          element: (
+            <SuspenseWrapper>
+              <CupolaEarth />
+            </SuspenseWrapper>
+          )
+        },
+        { 
+          path: "/story", 
+          element: (
+            <SuspenseWrapper>
+              <Story />
+            </SuspenseWrapper>
+          ),
+          children: [
+            { 
+              index: true, 
+              element: (
+                <SuspenseWrapper>
+                  <StoryForm />
+                </SuspenseWrapper>
+              )
+            },
+            { 
+              path: "form", 
+              element: (
+                <SuspenseWrapper>
+                  <StoryForm />
+                </SuspenseWrapper>
+              )
+            },
+            { 
+              path: "display", 
+              element: (
+                <SuspenseWrapper>
+                  <StoryDisplay />
+                </SuspenseWrapper>
+              )
+            }
+          ]
+        },
+        { 
+          path: "/ebook", 
+          element: (
+            <SuspenseWrapper>
+              <EBook />
+            </SuspenseWrapper>
+          )
+        },
+        { 
+          path: "*", 
+          element: (
+            <SuspenseWrapper>
+              <NotFound />
+            </SuspenseWrapper>
+          )
+        }
     ]}]);
 
   return (
-    <>
-    <Starfield/>
-    <RouterProvider router={routers}>  
-    </RouterProvider>
-    </>
+    <ErrorBoundary>
+        <Starfield/>
+        <RouterProvider future={{ v7_startTransition: true }} router={routers}>  
+        </RouterProvider>
+    </ErrorBoundary>
   )
 
 }

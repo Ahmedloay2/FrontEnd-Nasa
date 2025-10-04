@@ -1,0 +1,172 @@
+/* Note: this CSS is only an example, you can overlay whatever you want using the activeItem logic */
+
+#infinite-grid-menu-canvas {
+  cursor: grab;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  outline: none;
+}
+
+#infinite-grid-menu-canvas:active {
+  cursor: grabbing;
+}
+
+.action-button {
+  position: absolute;
+  left: 50%;
+  z-index: 10;
+  width: 200px;
+  height: 200px;
+  display: grid;
+  place-items: center;
+  background: #5227ff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 5px solid #000;
+}
+
+.face-title {
+  user-select: none;
+  position: absolute;
+  font-weight: 900;
+  font-size: 1.75rem;
+  left: 0rem;
+  top: 50%;
+}
+
+.action-button-icon {
+  user-select: none;
+  position: relative;
+  color: #fff;
+  top: 2px;
+  font-size: 26px;
+}
+
+.face-title {
+  position: absolute;
+  top: 50%;
+  transform: translate(20%, -50%);
+}
+
+.face-title.active {
+  opacity: 1;
+  transform: translate(20%, -50%);
+  pointer-events: auto;
+  transition: 0.5s ease;
+}
+
+.face-title.inactive {
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.1s ease;
+}
+
+.face-description {
+  user-select: none;
+  position: absolute;
+  max-width: 25ch;
+  top: 50%;
+  font-size: 1.1rem;
+  right: 0%;
+  transform: translate(0, -50%);
+}
+
+.face-description.active {
+  opacity: 1;
+  transform: translate(-90%, -50%);
+  pointer-events: auto;
+  transition: 0.5s ease;
+}
+
+.face-description.inactive {
+  pointer-events: none;
+  transform: translate(-60%, -50%);
+  opacity: 0;
+  transition: 0.1s ease;
+}
+
+/* Action Button Base Styles */
+.action-button {
+  position: absolute;
+  left: 50%;
+  z-index: 10;
+  width: 95px;
+  height: 95px;
+  padding: 5px;
+  display: grid;
+  place-items: center;
+  background: #5227ff;
+  border: 5px solid #000;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Active State */
+.action-button.active {
+  bottom: 3.8em;
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+  transition: 0.5s ease;
+}
+
+/* Hover Effect - Only when active */
+.action-button.active:hover {
+  transform: translateX(-50%) translateY(-10px) scale(1.1);
+  box-shadow: 0 15px 30px rgba(82, 39, 255, 0.6);
+  background: #6a3dff;
+}
+
+/* Inactive State */
+.action-button.inactive {
+  bottom: -80px;
+  transform: translateX(-50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.1s ease;
+}
+
+/* Icon Styles */
+.action-button-icon {
+  user-select: none;
+  position: relative;
+  color: #fff;
+  top: 0px;
+  font-size: 26px;
+  transition: transform 0.3s ease;
+}
+
+/* Icon animation on hover */
+.action-button.active:hover .action-button-icon {
+  transform: rotate(45deg) scale(1.1);
+}
+
+/* Optional: Add a pulsing animation when active */
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(82, 39, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(82, 39, 255, 0);
+  }
+}
+
+.action-button.active {
+  animation: pulse 2s infinite;
+}
+
+/* Remove pulse animation on hover */
+.action-button.active:hover {
+  animation: none;
+}
+
+@media (max-width: 1500px) {
+  .face-title,
+  .face-description {
+    display: none;
+  }
+}
