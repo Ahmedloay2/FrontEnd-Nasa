@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import LoadingSpinner from '../../../components/ui/LoadingSpinner/LoadingSpinner';
 import './CupolaGame.css';
-
+import earth2 from '../../../assets/video/earth2.mp4';
 // Level configurations
 const levelConfig = {
     1: { 
@@ -576,7 +576,7 @@ const CupolaGame = () => {
                     onLoadedData={handleVideoLoad}
                     onError={handleVideoError}
                 >
-                    <source src={`${window.location.origin}/earth2.mp4`} type="video/mp4" />
+                    <source src={earth2} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
 
