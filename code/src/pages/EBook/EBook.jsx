@@ -1,74 +1,44 @@
-import { memo } from 'react'
+import "./EBook.css";
 
-const EBook = memo(() => {
+const EBook = () => {
   return (
-    <main 
-      className="ebook-page"
-      style={{
-        minHeight: 'calc(100vh - 8rem)',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '2rem'
-      }}
-    >
-      <div 
-        className="ebook-content"
-        style={{
-          textAlign: 'center',
-          maxWidth: '600px'
-        }}
-      >
-        <i 
-          className="fas fa-book" 
-          aria-hidden="true"
-          style={{
-            fontSize: '4rem',
-            color: '#3b82f6',
-            marginBottom: '2rem'
-          }}
-        ></i>
-        <h1 
-          style={{
-            fontSize: '3rem',
-            fontWeight: 'bold',
-            marginBottom: '1rem',
-            color: '#e2e8f0',
-            margin: '0 0 1rem 0'
-          }}
-        >
-          E-Book
-        </h1>
-        <p 
-          style={{
-            fontSize: '1.125rem',
-            color: '#94a3b8',
-            marginBottom: '2rem'
-          }}
-        >
-          Interactive space exploration e-books coming soon. Learn about astronaut missions, 
-          space technology, and the International Space Station through immersive digital content.
-        </p>
-        <div 
-          className="coming-soon-badge"
-          style={{
-            display: 'inline-block',
-            padding: '0.5rem 1rem',
-            backgroundColor: '#1e293b',
-            border: '1px solid #3b82f6',
-            borderRadius: '0.5rem',
-            color: '#3b82f6',
-            fontWeight: '600'
-          }}
-        >
-          Coming Soon
+    <div className="ebook-page-container">
+      <div className="ebook-main-row">
+        <div className="ebook-info-section">
+          <h1 className="ebook-title">Orbiting the Void: An Astronaut's Life</h1>
+          <p className="ebook-description">
+            What is it like to make a home in the emptiness? Orbiting the Void takes you inside the profound and daily reality of life in space. This captivating ebook moves beyond the science to explore the human experience: the surreal tranquility of a spacewalk, the challenge of a simple meal in microgravity, the camaraderie of the crew, and the constant, humbling view of our world—a vibrant oasis against the infinite black. It is a story of transformation, where the stark contrast between human fragility and the cosmos's scale forever changes those who experience it. Through stunning photography and personal stories, discover what it truly means to live suspended between the structured world of orbit and the vast, silent void, and how that perspective reshapes our understanding of home.
+          </p>
+        </div>
+        <div className="ebook-viewer-section">
+          <div className="ebook-viewer-card">
+            {/* Replace with your actual e-book viewer component or iframe */}
+            <iframe
+              src="/ebook-viewer"
+              title="Space Journey E-Book"
+              className="ebook-viewer-iframe"
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
+            <div className="ebook-audio-row">
+              <span className="ebook-audio-label">Not a fan of reading? No worries! Tune into the podcast version of the e-book and enjoy it on the go.</span>
+              <div className="ebook-audio-bar-wrap">
+                <audio controls className="ebook-audio-player">
+                  <source src="/audio/ebook-podcast.mp3" type="audio/mpeg" />
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </main>
-  )
-})
-
-EBook.displayName = 'EBook'
+      <div className="ebook-quiz-section">
+            <h2 className="ebook-quiz-title">"Prove Your Planetary Expertise"</h2>
+            <p className="ebook-quiz-desc">Challenge yourself and unlock new cosmic insights.</p>
+            <button className="ebook-quiz-btn">Start Quiz</button>
+          </div>
+    </div>
+  );
+};
 
 export default EBook
