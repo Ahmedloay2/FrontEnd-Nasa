@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useCallback, memo } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { replace, useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Header from './components/Header'
 import './CupolaEarth.css'
@@ -47,7 +47,8 @@ const GamePanel = memo(() => {
   const navigate = useNavigate();
 
   const handleLaunchGame = useCallback(() => {
-    navigate('/cupola-game');
+    navigate('/cupola-game', { replace: true });
+    window.location.pathname = '/cupola-game';
   }, [navigate]);
   return (
     <div id="game-panel" role="tabpanel" aria-labelledby="game-tab">
