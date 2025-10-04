@@ -566,7 +566,7 @@ const CupolaGame = () => {
     return (
         <div className="cupola-game">
             <div className="game-container" ref={gameContainerRef}>
-                {/* Video background */}
+                {/*{/* Video background */}
                 <video 
                     className="earth-video" 
                     autoPlay 
@@ -576,7 +576,7 @@ const CupolaGame = () => {
                     onLoadedData={handleVideoLoad}
                     onError={handleVideoError}
                 >
-                    <source src="/earth2.mp4" type="video/mp4" />
+                    <source src={`${window.location.origin}/earth2.mp4`} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
 
