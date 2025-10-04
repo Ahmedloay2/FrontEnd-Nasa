@@ -1,0 +1,108 @@
+/* Devolopers component styles - matches app UI */
+.devolopers-section {
+  margin: 4rem 0 2rem 0;
+  text-align: center;
+}
+.devolopers-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #8b5cf6;
+  margin-bottom: 2.5rem;
+  letter-spacing: 1px;
+}
+.devolopers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem 2.5rem;
+  justify-items: center;
+  align-items: start;
+}
+.devoloper-card {
+  background: rgba(30,41,59,0.7);
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 16px #3b82f633;
+  padding: 2rem 1rem 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 220px;
+  max-width: 260px;
+  min-height: 340px;
+  height: 100%;
+  justify-content: space-between;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.devoloper-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 8px 32px #8b5cf633;
+}
+.devoloper-img-wrap {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid #3b82f6;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 12px #3b82f633;
+}
+.devoloper-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+.devoloper-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fbbf24;
+  margin-bottom: 0.7rem;
+  letter-spacing: 1px;
+}
+.devoloper-quote {
+  font-size: 1rem;
+  color: #d1d5db;
+  font-style: italic;
+  margin-bottom: 0;
+}
+@media (max-width: 900px) {
+  .devolopers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1.2rem;
+  }
+  .devoloper-card {
+    min-width: 180px;
+    max-width: 220px;
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+  }
+  .devoloper-img-wrap {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 0.8rem;
+  }
+}
+@media (max-width: 600px) {
+  .devolopers-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .devolopers-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem 0.5rem;
+  }
+  .devoloper-card {
+    min-width: 120px;
+    max-width: 100%;
+    padding: 0.7rem 0.2rem 0.7rem 0.2rem;
+  }
+  .devoloper-img-wrap {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0.5rem;
+  }
+  .devoloper-name {
+    font-size: 0.9rem;
+  }
+  .devoloper-quote {
+    font-size: 0.85rem;
+  }
+}

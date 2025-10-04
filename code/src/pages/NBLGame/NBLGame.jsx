@@ -34,7 +34,6 @@ const NBLGame = () => {
           This underwater facility simulates the weightless environment of space, allowing 
           astronauts to practice complex procedures before their missions.
         </p>
-        
         <div className="nbl-features">
           {features.map((feature, index) => (
             <div key={index} className="nbl-feature">
@@ -44,7 +43,36 @@ const NBLGame = () => {
             </div>
           ))}
         </div>
+        {/* How to Play Section */}
+        <div className="nbl-howto-section">
+          <h2 className="nbl-howto-title">How to Play</h2>
+          <ul className="nbl-howto-list">
+            <li>
+              Use arrow keys or
+              <span className="nbl-key-group">
+                <span className="nbl-key">W</span>
+                <span className="nbl-key">A</span>
+                <span className="nbl-key">S</span>
+                <span className="nbl-key">D</span>
+              </span>
+              to swim around the pool.
+            </li>
+            <li>Press SPACE to collect objects near you.</li>
+            <li>Stay inside the green circle (Neutral Buoyancy Zone) to avoid losing attempts.</li>
+            <li>Collect as many target objects as possible before time runs out.</li>
+            <li>Watch your mass and depth on the HUD for best results.</li>
+          </ul>
+        </div>
       </div>
+      <div className="nbl-game-container">
+        <iframe
+          src="/Game/index.html"
+          title="NBL Training Game"
+          className="nbl-game-iframe"
+          sandbox="allow-scripts allow-same-origin allow-forms"
+        />
+      </div>
+      
     </div>
   );
 };

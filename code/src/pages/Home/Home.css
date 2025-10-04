@@ -1,3 +1,14 @@
+/* Mission/Vision/Approach keyword hover styles */
+.mva-keyword {
+  color: #8b5cf6;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+.mva-keyword:hover {
+  color: #3b82f6;
+  text-shadow: 0 2px 8px #3b82f633;
+}
 /* Home.css */
 .home-container {
   min-height: calc(100vh - 8rem);
@@ -17,6 +28,7 @@
 .home-title {
   font-size: 4rem;
   font-weight: bold;
+/* removed stray closing brace */
   margin-bottom: 1rem;
   background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
   -webkit-background-clip: text;
@@ -32,8 +44,8 @@
 }
 
 .home-features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
   max-width: 1200px;
   width: 100%;
@@ -47,6 +59,42 @@
   margin-top: 3rem;
   margin-bottom: 3rem;
   text-align: center;
+}
+
+.home-mva-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+  margin: 2rem 0;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.home-mva-block {
+  flex: 1 1 0;
+  background: rgba(139, 92, 246, 0.08);
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+/* removed stray closing brace */
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.home-mva-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #8b5cf6;
+  margin-bottom: 1rem;
+}
+
+.home-mva-text {
+  font-size: 1.1rem;
+  color: #d1d5db;
+  line-height: 1.7;
+}
 }
 
 .home-welcome-title {
@@ -82,5 +130,10 @@
   
   .home-hero {
     margin-bottom: 2rem;
+  }
+  .home-mva-section {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
   }
 }

@@ -1,0 +1,187 @@
+.ebook-audio-bar-wrap {
+  margin-top: 0.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.ebook-viewer-card {
+  /* ...existing styles... */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.ebook-audio-row {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #3b82f655;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+/* EBook.css - Responsive, modern styles for the e-book page */
+.ebook-page-container {
+  min-height: calc(100vh - 8rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #1e293b 0%, #3b82f6 100%);
+}
+
+.ebook-main-row {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  width: 100%;
+  max-width: 1200px;
+  align-items: flex-start;
+}
+
+.ebook-info-section {
+  flex: 1 1 0;
+  color: #e2e8f0;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ebook-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ebook-description {
+  font-size: 1.2rem;
+  color: #d1d5db;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+.ebook-audio-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.ebook-audio-label {
+  font-size: 1rem;
+  color: #c7d2fe;
+}
+
+.ebook-audio-player {
+  background: #1e293b;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px #3b82f633;
+}
+
+.ebook-quiz-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.ebook-quiz-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #a78bfa;
+  margin-bottom: 0.5rem;
+}
+
+.ebook-quiz-desc {
+  color: #d1d5db;
+  margin-bottom: 1.5rem;
+}
+
+.ebook-quiz-btn {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.75rem 2.5rem;
+  box-shadow: 0 2px 12px #8b5cf633;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.ebook-quiz-btn:hover {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  box-shadow: 0 4px 24px #3b82f633;
+}
+
+.ebook-viewer-section {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ebook-viewer-card {
+  background: #1e293b;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 32px #3b82f633;
+  padding: 1.5rem;
+  max-width: 420px;
+  width: 100%;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ebook-viewer-iframe {
+  width: 100%;
+  height: 480px;
+  border-radius: 1rem;
+  background: #fff;
+}
+
+@media (max-width: 900px) {
+  .ebook-main-row {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+  .ebook-viewer-card {
+    max-width: 100%;
+    min-height: 400px;
+    padding: 1rem;
+  }
+  .ebook-viewer-iframe {
+    height: 320px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ebook-page-container {
+    padding: 0.5rem;
+  }
+  .ebook-title {
+    font-size: 2rem;
+  }
+  .ebook-info-section {
+    padding: 1rem 0.5rem;
+  }
+  .ebook-viewer-card {
+    min-height: 220px;
+    padding: 0.5rem;
+  }
+  .ebook-viewer-iframe {
+    height: 160px;
+  }
+  .ebook-quiz-title {
+    font-size: 1.2rem;
+  }
+}
